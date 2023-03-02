@@ -8,19 +8,24 @@ with requests.get(url) as response: # το αντικείμενο response
 
     print("HTTP headers:")
     for header, value in headers.items():
-        print(f"{header}: {value}")
+        print("{:30s} {}".format(header, value))
+
+print("#------------------------------------------------------------#")
 print("\n\n\n")
 with requests.get(url) as response: # το αντικείμενο response
-
+    print("#------------------------------------------------------------#")
     server_os = response.headers.get("server")
-    
     print("Tο λογισμικό που χρησιμοποιεί ο web server για να απαντήσει στο αίτημα:",server_os)
+
+    print("#------------------------------------------------------------#")    
     cookies = response.cookies
     count=len(cookies)
     if count == 0:print("ΔΕΝ ΧΡΗΣΙΜΟΠΟΙΟΥΝΤΑΙ COOKIES")
     else:
-        print("ΧΡΗΣΙΜΟΠΟΙΟΥΝΤΑΙ COOKIES \nΤα cookies αυτά είναι:")
+        print("ΧΡΗΣΙΜΟΠΟΙΟΥΝΤΑΙ COOKIES ")
         for cookie in cookies:
+            print("#------------------------------------------------------------#")
+            print("Τα cookies αυτά είναι:")
             print('Cookie name:', cookie.name)
             #πόσο διάστημα θα είναι έγκυρο
             cookie_expiry_date = datetime.datetime.fromtimestamp(int(cookie.expires))#μετατροπή απο timestamp σε datetime ωστε να κανω σύγκριση
