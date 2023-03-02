@@ -1,5 +1,5 @@
 import requests # εισαγωγή της βιβλιοθήκης
-import datetime #πόσο διάστημα θα είναι έγκυρο
+import datetime 
 
 url = str(input()) # προσδιορισμός του url
 
@@ -22,11 +22,11 @@ with requests.get(url) as response: # το αντικείμενο response
         print("ΧΡΗΣΙΜΟΠΟΙΟΥΝΤΑΙ COOKIES \nΤα cookies αυτά είναι:")
         for cookie in cookies:
             print('Cookie name:', cookie.name)
-            cookie_expiry_date = datetime.datetime.fromtimestamp(int(cookie.expires))
+            #πόσο διάστημα θα είναι έγκυρο
+            cookie_expiry_date = datetime.datetime.fromtimestamp(int(cookie.expires))#μετατροπή απο timestamp σε datetime ωστε να κανω σύγκριση
             expiration_duration = cookie_expiry_date - datetime.datetime.now()
-            print('Cookie expiry date:', cookie_expiry_date)
-            print('Expiration duration in seconds:', expiration_duration.total_seconds())
-            print('Expiration duration in days:', expiration_duration.days)
+            print('Expiration duration in seconds:', expiration_duration.total_seconds())#διάρκεια σε δευτερόλεπτα
+            print('Expiration duration in days:', expiration_duration.days,end="\n\n")#διάρκεια σε μέρες
     
 
         
