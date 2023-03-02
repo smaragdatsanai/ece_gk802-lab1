@@ -7,4 +7,4 @@ with requests.get(url) as response: # το αντικείμενο response
 
     print("HTTP headers:")
     for header, value in headers.items():
-        print(f"{header}: {value}")
+        print("{:30s} {}".format(header, value))
